@@ -32,6 +32,15 @@ module Responsys
           puts "failed:\n" + recipients[:recipient].to_s unless outcome[:success]
         end
       end
+
+      def launch_campaign(campaign, proof_launch_options = nil, launch_preferences = nil)
+        message = {
+          campaign: campaign.to_api,
+          proofLaunchOptions: proof_launch_options,
+          launchPreferences: launch_preferences
+        }
+        api_method(:launch_campaign, message)
+      end
     end
   end
 end
