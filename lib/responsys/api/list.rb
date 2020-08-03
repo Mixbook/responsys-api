@@ -34,6 +34,16 @@ module Responsys
 
         api_method(:merge_list_members_riid, message)
       end
+
+      def delete_list_members(interact_object, query_column, ids_to_retrieve)
+        message = {
+          list: interact_object.to_api,
+          queryColumn: query_column.to_api,
+          idsToDelete: ids_to_retrieve
+        }
+
+        api_method(:delete_list_members, message)
+      end
     end
   end
 end
